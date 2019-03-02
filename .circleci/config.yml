@@ -35,11 +35,11 @@ jobs:
 
       # run tests!
       - run:
-        name: '3 machines'
-        # job will use workspace with code and dependencies
-        # installed by the "install" job
-        record: true # record results on Cypress dashboard
-        parallel: true # load balance all tests
-        parallelism: 3 # across 3 machines
-        group: '3x-electron' # name this group
-        start: npm test
+          name: '3 machines'
+          # job will use workspace with code and dependencies
+          # installed by the "install" job
+          record: true # record results on Cypress dashboard
+          parallel: true # load balance all tests
+          parallelism: 3 # across 3 machines
+          group: '3x-electron' # name this group
+          start: npm test
