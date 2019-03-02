@@ -30,7 +30,7 @@ jobs:
 
       - save_cache:
           paths:
-            - ~/root/.cache
+            - ~/.cache/Cypress
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
