@@ -34,7 +34,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run:
+      - cypress/run:
           name: '3 machines'
           # job will use workspace with code and dependencies
           # installed by the "install" job
