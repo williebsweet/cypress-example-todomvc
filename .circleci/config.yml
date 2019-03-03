@@ -46,7 +46,7 @@ workflows:
       - cypress/install
       - cypress/run:
           # start: npm start
-          wait-on: 'http://localhost:8888'
+          # wait-on: 'http://localhost:8888'
           requires:
             - cypress/install
           record: true
