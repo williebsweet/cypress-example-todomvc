@@ -40,12 +40,6 @@
 version: 2.1
 orbs:
   cypress: cypress-io/cypress@1
-executors:
-  base10-key:
-    docker:
-      - image: 'cypress/base:10'
-    environment:
-      key: e1f49183-61e6-4849-8c76-d46d5ca564b4
 workflows:
   build:
     jobs:
