@@ -4,10 +4,6 @@
   "version": "0.0.0-development",
   "description": "This repo contains an example React App, with the tests written in Cypress",
   "scripts": {
-    "build": "npm run lint && npm run types && npm run stop-only",
-    "types": "tsc --noEmit",
-    "stop-only": "stop-only -f cypress/integration",
-    "lint": "eslint --fix cypress/**/*.js app/assets/js/scripts.js",
     "cypress:version": "cypress version",
     "cypress:verify": "cypress verify",
     "cypress:open": "cypress open",
@@ -24,6 +20,7 @@
     "test:ci:record": "run-p --race start:ci cypress:run:record",
     "test:ci:chrome": "run-p --race start:ci cypress:run:chrome",
     "test:ci:headed": "run-p --race start:ci cypress:run:headed",
+    "lint": "eslint --fix cypress/*/*.js",
     "effective:circle:config": "circleci config process circle.yml | sed /^#/d"
   },
   "dependencies": {
