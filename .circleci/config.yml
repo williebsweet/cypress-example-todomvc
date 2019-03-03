@@ -45,7 +45,7 @@ workflows:
     jobs:
       - cypress/install
       - cypress/run:
-          start: npm start
+          # start: npm start
           wait-on: 'http://localhost:8888'
           requires:
             - cypress/install
