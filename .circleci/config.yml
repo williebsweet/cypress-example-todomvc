@@ -43,9 +43,7 @@ orbs:
 workflows:
   build:
     jobs:
-      - cypress/install:
-          environment:
-            CYPRESS_RECORD_KEY: e1f49183-61e6-4849-8c76-d46d5ca564b4
+      - cypress/install
       - cypress/run:
           start: npm start
           wait-on: 'http://localhost:8888'
