@@ -50,7 +50,6 @@ workflows:
           requires:
             - cypress/install
           record: true
-          key: e1f49183-61e6-4849-8c76-d46d5ca564b4
           parallel: true
           parallelism: 2
           group: 2 machines
