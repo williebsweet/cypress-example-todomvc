@@ -1,3 +1,108 @@
+version: 2.1
+orbs:
+  cypress: cypress-io/cypress@1
+workflows:
+  build:
+    jobs:
+      - cypress/install
+      - cypress/run:
+          start: npm start
+          requires:
+            - cypress/install
+          record: true
+          parallel: true
+          parallelism: 3
+          group: 2 machines
+
+
+# # Orb 'cypress-io/cypress@1' resolved to 'cypress-io/cypress@1.5.1'
+# version: 2
+# jobs:
+#   cypress/install:
+#     docker:
+#     - image: cypress/base:10
+#     steps:
+#     - checkout
+#     - restore_cache:
+#         keys:
+#         - cache-{{ arch }}-{{ .Branch }}-{{ checksum "package.json" }}
+#     - run:
+#         name: Check if package-lock.json exists
+#         command: |
+#           if [ ! -e ./package-lock.json ]; then
+#             echo "The Cypress orb uses 'npm ci' to install 'node_modules', which requires a 'package-lock.json'."
+#             echo "A 'package-lock.json' file was not found. Please run 'npm install' in your project,"
+#             echo "and commit 'package-lock.json' to your repo."
+#             exit 1
+#           fi
+#     - run:
+#         name: Npm CI
+#         command: npm ci
+#     - run:
+#         command: npx cypress verify
+#     - save_cache:
+#         key: cache-{{ arch }}-{{ .Branch }}-{{ checksum "package.json" }}
+#         paths:
+#         - ~/.npm
+#         - ~/.cache
+#     - persist_to_workspace:
+#         root: ~/
+#         paths:
+#         - project
+#         - .cache/Cypress
+#   cypress/run:
+#     docker:
+#     - image: cypress/base:10
+#     parallelism: 3
+#     steps:
+#     - run:
+#         command: echo "Assuming dependencies were installed using cypress/install
+#           job"
+#     - attach_workspace:
+#         at: ~/
+#     - run:
+#         name: Start
+#         command: npm start
+#         background: true
+#     - run:
+#         name: Run Cypress tests
+#         command: |
+#           npx cypress run \
+#              \
+#              \
+#              --record \
+#                --group '2 machines'  \
+#                --parallel  \
+# workflows:
+#   build:
+#     jobs:
+#     - cypress/install
+#     - cypress/run:
+#         requires:
+#         - cypress/install
+#   version: 2
+
+# Original config.yml file:
+# # run Cypress tests using CircleCI Cypress orb
+# # https://github.com/cypress-io/circleci-orb
+#
+# version: 2.1
+# orbs:
+#   cypress: cypress-io/cypress@1
+# workflows:
+#   build:
+#     jobs:
+#       - cypress/install
+#       - cypress/run:
+#           start: npm start
+#           requires:
+#             - cypress/install
+#           record: true
+#           parallel: true
+#           parallelism: 3
+#           group: 2 machinescypress-example-todomvc
+
+
 # Javascript Node CircleCI 2.0 configuration file
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
@@ -35,20 +140,3 @@
 #
 #       # run tests!
 #       - run: npm test
-
-
-version: 2.1
-orbs:
-  cypress: cypress-io/cypress@1
-workflows:
-  build:
-    jobs:
-      - cypress/install
-      - cypress/run:
-          start: npm start
-          requires:
-            - cypress/install
-          record: true
-          parallel: true
-          parallelism: 3
-          group: 2 machines
